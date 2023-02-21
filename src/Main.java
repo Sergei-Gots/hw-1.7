@@ -1,3 +1,6 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -6,7 +9,18 @@ public class Main {
         task1();
         task2();
         task3();
+        task4();
 
+
+        System.out.println();
+    }
+    private static void task8() {
+        int firstYear = 0;
+        int period = 79;
+        int currentYear;
+    }
+    private static void task4() {
+        System.out.println("Task 4");
 
         System.out.println();
     }
@@ -21,13 +35,15 @@ public class Main {
         System.out.println("Task 3");
 
         int population = 12_000_000;
-        int incrementPro1000 = 17 - 8 ;
+        final int incrementPro1000PerYear = 17 - 8 ;
 
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
         for(int i = 0; i < 10; i++) {
-            population += (population / 1000 ) * incrementPro1000;
-            System.out.print("Год " + (i + 1) + ", численность населения составляет ");
-            System.out.printf("%,d.\n", population);
+            population += (population / 1000 ) * incrementPro1000PerYear;
+            System.out.printf(Locale.US, "Год " + (i + 1) + ", численность населения составляет ");
+            //System.out.printf("%,d.\n", population);
+            System.out.println(numberFormat.format(population) + ".");
         }
 
         System.out.println();
@@ -76,12 +92,15 @@ public class Main {
         int total = 0;
         int i = 0;
 
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.FRANCE);
+
         while (total < 2_459_000) {
             total += 15_000;
             i++;
-        }
 
-        System.out.println("Месяц " + i + ", сумма накоплений равна " + total + " рублей.");
+            System.out.println("Месяц " + i +
+                    ", сумма накоплений равна " + numberFormat.format(total) + " рублей.");
+        }
 
         System.out.println();
     }
